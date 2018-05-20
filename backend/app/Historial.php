@@ -14,11 +14,11 @@ class Historial extends Model
 
     public $timestamps = false;
 
-    public function clientes() {
+    public function cliente() {
     	return $this->belongsTo('App\Cliente', 'tgm_cliente_id');
     }
 
-    public function rutinas() {
+    public function rutina() {
     	return $this->belongsTo('App\Rutina', 'tgm_rutina_id');
     }
 }

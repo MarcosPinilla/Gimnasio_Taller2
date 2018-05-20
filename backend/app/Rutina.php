@@ -15,6 +15,6 @@ class Rutina extends Model
     public $timestamps = false;
 
     public function historiales() {
-    	return $this->hasMany('App\Historial', 'tgm_historial_rutina_id');
+    	return $this->hasMany('App\Historial', 'tgm_rutina_id');
     }
 }

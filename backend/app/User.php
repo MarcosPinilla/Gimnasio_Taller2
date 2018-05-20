@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'users';
+    protected $table = 'tgm_user';
     protected $primarykey = 'id';
 
     /**
@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'usu_correo', 'password', 'tgm_rol_id', 'tgm_cliente_id'
     ];
 
     /**
@@ -29,5 +29,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function rol() {
+        return $this->belongsTo('App\Rol', 'tgm_rol_id');
+    }
+
+    public function cliente() {
+        return $this->belongsTo('App\Cliente', 'tgm_cliente_id');
+    }
 
 }
