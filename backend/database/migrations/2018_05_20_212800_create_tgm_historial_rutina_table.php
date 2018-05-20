@@ -19,6 +19,7 @@ class CreateTgmHistorialRutinaTable extends Migration
             $table->foreign('tgm_cliente_id')->references('id')->on('tgm_cliente')->onDelete('cascade');
             $table->integer('tgm_rutina_id')->unsigned();
             $table->foreign('tgm_rutina_id')->references('id')->on('tgm_rutina')->onDelete('cascade');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }
