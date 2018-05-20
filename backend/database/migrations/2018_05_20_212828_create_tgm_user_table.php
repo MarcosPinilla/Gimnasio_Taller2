@@ -15,7 +15,7 @@ class CreateTgmUserTable extends Migration
     {
         Schema::create('tgm_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('usu_correo')->index();
+            $table->string('usu_correo', 30)->index();
             $table->string('password');
             $table->integer('tgm_rol_id')->unsigned();
             $table->integer('tgm_cliente_id')->unsigned();

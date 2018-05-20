@@ -15,7 +15,7 @@ class CreateTgmGimnasioTable extends Migration
     {
         Schema::create('tgm_gimnasio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->index();
+            $table->string('nombre', 20)->index();
             $table->timestamps();
         });
     }

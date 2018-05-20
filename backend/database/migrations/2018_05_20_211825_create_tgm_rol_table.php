@@ -15,7 +15,7 @@ class CreateTgmRolTable extends Migration
     {
         Schema::create('tgm_rol', function (Blueprint $table) {
             $table->increments('id');
-            $table->strng('desc_rol');
+            $table->string('desc_rol');
             $table->timestamps();
         });
     }

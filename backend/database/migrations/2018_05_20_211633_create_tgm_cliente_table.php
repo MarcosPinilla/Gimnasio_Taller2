@@ -15,8 +15,8 @@ class CreateTgmClienteTable extends Migration
     {
         Schema::create('tgm_cliente', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->index();
-            $table->string('apellido')->index();
+            $table->string('nombre', 20)->index();
+            $table->string('apellido', 50)->index();
             $table->string('peso');
             $table->string("imc");
             $table->timestamps();
