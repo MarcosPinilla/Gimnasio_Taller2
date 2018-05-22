@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Historial extends Model
 {
-    protected $table = 'tgm_historial_rutina';
+    protected $table = 'tgm_historial';
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['tgm_cliente_id','tgm_rutina_id','estado'];
+    protected $fillable = ['peso','imc','estado_rutina_id'];
 
     public $timestamps = false;
 
-    public function cliente() {
-    	return $this->belongsTo('App\Cliente', 'tgm_cliente_id');
+    public function estado() {
+    	return $this->belongsTo('App\EstadoRutina', 'estado_rutina_id');
     }
 
-    public function rutina() {
-    	return $this->belongsTo('App\Rutina', 'tgm_rutina_id');
-    }
 }

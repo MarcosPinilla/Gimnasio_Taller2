@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTgmHistorialRutinaTable extends Migration
+class CreateEstadoRutinaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTgmHistorialRutinaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tgm_historial_rutina', function (Blueprint $table) {
+        Schema::create('tgm_estado_rutina', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tgm_cliente_id')->unsigned();
             $table->foreign('tgm_cliente_id')->references('id')->on('tgm_cliente')->onDelete('cascade');
@@ -31,6 +31,6 @@ class CreateTgmHistorialRutinaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tgm_historial_rutina');
+        Schema::dropIfExists('estado_rutina');
     }
 }

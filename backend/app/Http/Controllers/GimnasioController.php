@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Gimnasio;
+
 class GimnasioController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class GimnasioController extends Controller
      */
     public function index()
     {
-        //
+        return Gimnasio::all();
     }
 
     /**
@@ -34,7 +36,8 @@ class GimnasioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gimnasio::create($request->all());
+        return ['created' => true];
     }
 
     /**
@@ -45,7 +48,7 @@ class GimnasioController extends Controller
      */
     public function show($id)
     {
-        //
+        return Gimnasio::find($id);
     }
 
     /**
@@ -68,7 +71,9 @@ class GimnasioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $gimnasio = Gimnasio::find($id);
+        $gimnasio->update($request->all());
+        return ['updated' => true];
     }
 
     /**
@@ -79,6 +84,7 @@ class GimnasioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Gimnasio::destroy($id);
+        return ['deleted' => true];
     }
 }

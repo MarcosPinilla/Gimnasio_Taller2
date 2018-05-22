@@ -12,21 +12,24 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::updateOrCreate([
-        	"name" => "Daniel Coronado Mendoza",
-        	"email" => "d.coronado01@ufromail.cl",
-        	"password" => bcrypt("1234"),
+        	"usu_correo" => "d.coronado01@ufromail.cl",
+            "password" => bcrypt("1234"),
+            "tgm_rol_id" => 3,
+            "tgm_cliente_id" => 1,
         ]);
 
         User::updateOrCreate([
-        	"name" => "Felipe Acuña Figueroa",
-        	"email" => "f.acuna01@ufromail.cl",
-        	"password" => bcrypt("1234"),
+            "usu_correo" => "f.acuna01@ufromail.cl",
+            "password" => bcrypt("1234"),
+            "tgm_rol_id" => 2,
+            "tgm_cliente_id" => 2,
         ]);
 
         User::updateOrCreate([
-        	"name" => "Marcos Pinilla Martinez",
-        	"email" => "m.pinilla03@ufromail.cl",
-        	"password" => bcrypt("1234"),
+            "usu_correo" => "m.pinilla03@ufromail.cl",
+            "password" => bcrypt("1234"),
+            "tgm_rol_id" => 1,
+            "tgm_cliente_id" => 3,
         ]);
     }
 }
