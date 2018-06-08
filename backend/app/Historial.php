@@ -10,7 +10,7 @@ class Historial extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['peso','imc','estado_rutina_id'];
+    protected $fillable = ['peso', 'imc', 'estado_rutina_id', 'created_at', 'updated_at'];
 
     public $timestamps = false;
 

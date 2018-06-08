@@ -10,7 +10,7 @@ class EstadoRutina extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['tgm_cliente_id','tgm_rutina_id','estado'];
+    protected $fillable = ['tgm_cliente_id', 'tgm_rutina_id', 'estado', 'created_at', 'updated_at'];
 
     public $timestamps = false;
 

@@ -10,7 +10,7 @@ class Cliente extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'nombre', 'apellido'
+        'nombre', 'apellido', 'created_at', 'updated_at'
     ];
 
     public function usuario() {

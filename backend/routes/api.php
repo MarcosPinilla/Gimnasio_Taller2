@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['jwt.auth']], function () {
     
     Route::resource('clientes', 'ClienteController');
+    Route::post('historialcliente', 'ClienteController@obtenerHistorialCliente');
     Route::resource('gimnasio', 'GimnasioController');
     Route::resource('historial', 'HistorialController');
     Route::resource('estadorutina', 'EstadoRutinaController');

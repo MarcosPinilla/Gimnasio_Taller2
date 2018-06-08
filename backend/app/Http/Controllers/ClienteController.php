@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Cliente;
 
+use App\Http\Controllers\AuthenticateController;
+
 class ClienteController extends Controller
 {
     /**
@@ -86,5 +88,16 @@ class ClienteController extends Controller
     {
         Cliente::destroy($id);
         return ['deleted' => true];
+    }
+
+    public function obtenerHistorialCliente(AuthenticateController $auth) {
+
+        $user = \JWTAuth::parseToken()->authenticate();
+
+        return Cliente::with('estados.historiales', 'estados.rutina')
+            ->join('tgm_estado_rutina', 'tgm_cliente.id', '=', 'tgm_estado_rutina.tgm_cliente_id')
+            ->where([['tgm_cliente.id', $user->tgm_cliente_id],['tgm_estado_rutina.estado', false]])
+            ->first();
+
     }
 }

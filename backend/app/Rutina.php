@@ -10,7 +10,7 @@ class Rutina extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['nombre','descripcion'];
+    protected $fillable = ['nombre', 'descripcion', 'created_at', 'updated_at'];
 
     public $timestamps = false;
 
