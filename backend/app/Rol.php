@@ -10,7 +10,7 @@ class Rol extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['desc_rol'];
+    protected $fillable = ['desc_rol', 'created_at', 'updated_at'];
 
     public $timestamps = false;
 

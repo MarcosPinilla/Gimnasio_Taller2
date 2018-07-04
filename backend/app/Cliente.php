@@ -10,7 +10,7 @@ class Cliente extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
-        'nombre', 'apellido', 'peso', 'imc'
+        'nombre', 'apellido', 'created_at', 'updated_at'
     ];
 
     public function usuario() {
@@ -21,7 +21,7 @@ class Cliente extends Model
     	return $this->belongsToMany('App\Gimnasio', 'tgm_inscripcion', 'tgf_cliente_id', 'tgm_gimnasio_id');
     }
 
-    public function historiales() {
-    	return $this->hasMany('App\Historial', 'tgm_cliente_id');
+    public function estados() {
+    	return $this->hasMany('App\EstadoRutina', 'tgm_cliente_id');
     }
 }

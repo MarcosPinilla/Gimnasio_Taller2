@@ -19,7 +19,16 @@ use Illuminate\Http\Request;
 
 //Grupo de rutas que tienen un middleware jwt.auth
 Route::group(['middleware' => ['jwt.auth']], function () {
-	
+    
+    Route::resource('clientes', 'ClienteController');
+    Route::post('historialcliente', 'ClienteController@obtenerHistorialCliente');
+    Route::resource('gimnasio', 'GimnasioController');
+    Route::resource('historial', 'HistorialController');
+    Route::resource('estadorutina', 'EstadoRutinaController');
+    Route::resource('rol', 'RolController');
+    Route::resource('rutina', 'RutinaController');
+    Route::resource('usuario', 'UserController');
+
 });
 //Nueva ruta para el login
 Route::post('/login', 'AuthenticateController@authenticate');

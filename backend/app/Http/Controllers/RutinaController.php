@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Rutina;
+
 class RutinaController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class RutinaController extends Controller
      */
     public function index()
     {
-        //
+        return Rutina::all();
     }
 
     /**
@@ -34,7 +36,8 @@ class RutinaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Rutina::create($request->all());
+        return ['created' => true];
     }
 
     /**
@@ -45,7 +48,7 @@ class RutinaController extends Controller
      */
     public function show($id)
     {
-        //
+        return Rutina::find($id);
     }
 
     /**
@@ -68,7 +71,9 @@ class RutinaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rutina = Rutina::find($id);
+        $rutina->update($request->all());
+        return ['updated' => true];
     }
 
     /**
@@ -79,6 +84,7 @@ class RutinaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Rutina::destroy($id);
+        return ['deleted' => true];
     }
 }

@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Cliente;
+use App\EstadoRutina;
 
-use App\Http\Controllers\AuthenticateController;
-
-class ClienteController extends Controller
+class EstadoRutinaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return Cliente::all();
+        return EstadoRutina::all();
     }
 
     /**
@@ -27,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return EstadoRutina::all();
     }
 
     /**
@@ -38,7 +36,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        Cliente::create($request->all());
+        EstadoRutina::insert([
+            'tgm_cliente_id' => $request->tgm_cliente_id,
+            'tgm_rutina_id' => $request->tgm_rutina_id,
+            'estado' => false
+        ]);
         return ['created' => true];
     }
 
@@ -50,7 +52,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        return Cliente::find($id);
+        return EstadoRutina::find($id);
     }
 
     /**
@@ -73,8 +75,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cliente = Cliente::find($id);
-        $cliente->update($request->all());
+        EstadoRutina::where('id', $id)->update(['estado'=>true]);
         return ['updated' => true];
     }
 
@@ -86,18 +87,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        Cliente::destroy($id);
+        EstadoRutina::destroy($id);
         return ['deleted' => true];
-    }
-
-    public function obtenerHistorialCliente(AuthenticateController $auth) {
-
-        $user = \JWTAuth::parseToken()->authenticate();
-
-        return Cliente::with('estados.historiales', 'estados.rutina')
-            ->join('tgm_estado_rutina', 'tgm_cliente.id', '=', 'tgm_estado_rutina.tgm_cliente_id')
-            ->where([['tgm_cliente.id', $user->tgm_cliente_id],['tgm_estado_rutina.estado', false]])
-            ->first();
-
     }
 }
