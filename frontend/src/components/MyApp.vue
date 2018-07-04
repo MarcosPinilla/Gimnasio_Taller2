@@ -82,7 +82,7 @@
       <router-view/>
     </v-content>
     <v-footer :fixed="fixed" app class="transparent">
-      <span>&copy; 2018 - Gym Fit - Acuña / Coronado</span>
+      <span>&copy; 2018 - Gym Fit</span>
     </v-footer>
   </v-app>
 </template>
