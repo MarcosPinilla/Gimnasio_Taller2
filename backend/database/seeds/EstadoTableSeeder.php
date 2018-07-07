@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\EstadoRutina;
 
 class EstadoTableSeeder extends Seeder
 {
@@ -12,10 +12,22 @@ class EstadoTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tgm_estado_rutina')->insert([
+        EstadoRutina::updateOrCreate([
             'tgm_cliente_id' => 1,
             'tgm_rutina_id' => 1,
             'estado' => false
+        ]);
+
+        EstadoRutina::updateOrCreate([
+            'tgm_cliente_id' => 2,
+            'tgm_rutina_id' => 2,
+            'estado' => false
+        ]);
+
+        EstadoRutina::updateOrCreate([
+            'tgm_cliente_id' => 3,
+            'tgm_rutina_id' => 1,
+            'estado' => true
         ]);
     }
 }
