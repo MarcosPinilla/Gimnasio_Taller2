@@ -8,17 +8,16 @@
       enable-resize-watcher
       fixed
       app
-      style="background: linear-gradient(0.40turn, #5a5050, #547a82, #3eaca8, #a2d4ab, #e5eec1);"
+      style="background-color: #1976D2;"
     >
-      <v-toolbar style="background-color: #676767;" class="transparent" flat>
+      <v-toolbar style="background-color: #1976D2;" class="transparent" flat>
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img src="https://randomuser.me/api/portraits/men/85.jpg">
+              <img src="https://cdn0.iconfinder.com/data/icons/iconshock_guys/512/andrew.png">
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title style="color: #a2d4ab;">{{ user.nombre + " " + user.apellidos }}</v-list-tile-title>
-              <h5 style="color: #3eaca8;">{{ user.rol }}</h5>
+              <v-list-tile-title style="color: #ffffff;">{{ cliente.nombre }} {{ cliente.apellido }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -27,10 +26,10 @@
         <v-divider></v-divider>
         <v-list-tile @click="goHome()">
           <v-list-tile-action>
-            <v-icon>home</v-icon>
+            <v-icon style="color: #ffffff;">home</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title style="color: #ffffff;">Inicio</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -69,12 +68,12 @@
     <v-toolbar
       app
       :clipped-left="clipped"
-      style="background-color: #2a363b; color: #99b898;"
+      style="background-color: #64B5F6; color: #ffffff;"
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer" style="color: #99b898;"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer" style="color: #ffffff;"></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn @click="logout" flat style="color: #e84a5f;">Cerrar Sesión
+      <v-btn @click="logout" flat style="color: #ffffff;">Cerrar Sesión
         <v-icon dark right>exit_to_app</v-icon>
       </v-btn>
     </v-toolbar>
@@ -82,13 +81,15 @@
       <router-view/>
     </v-content>
     <v-footer :fixed="fixed" app class="transparent">
-      <span>&copy; 2018 - Gym Fit</span>
+      <span style="color: #ffffff;">&copy; Tim Gym</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import CredentialsService from '@/services/Credentials.service'
+import {loggedService} from '@/services/Logged.service'
+import {clienteService} from '@/services/Clientes.service'
+import CredentialsService from '@/services/Credentials.service.js'
 
 export default {
   data () {
@@ -97,19 +98,30 @@ export default {
       drawer: true,
       fixed: false,
       miniVariant: false,
-      title: 'Gym-Fit',
+      title: 'Tim Gym',
       user: {},
-      credenciales: new CredentialsService()
+      cliente: {},
+      idProfile: null,
+      credentialService: new CredentialsService()
     }
   },
   mounted () {
     let vm = this
-    vm.user = vm.credenciales.getCurrentUser()
+    loggedService.query().then(data => {
+      vm.user = data.body
+      clienteService.getById(vm.user.tgm_cliente_id).then(data => {
+        vm.cliente = data.body
+      }, erro => {
+        console.log('error cliente')
+      })
+    }, erro => {
+      console.log('error user')
+    })
   },
   methods: {
     logout () {
       let vm = this
-      vm.credenciales.clearCredentials()
+      vm.credentialService.clearCredentials()
       vm.$router.push('/login')
     },
     goHome () {

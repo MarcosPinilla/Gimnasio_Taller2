@@ -32,4 +32,4 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 });
 //Nueva ruta para el login
 Route::post('/login', 'AuthenticateController@authenticate');
-Route::post('token', 'AuthenticateController@getAuthenticatedUser');
+Route::get('token', 'AuthenticateController@getAuthenticatedUser');
