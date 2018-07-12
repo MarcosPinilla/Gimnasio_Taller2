@@ -15,7 +15,7 @@ class HistorialController extends Controller
      */
     public function index()
     {
-        return Historial::all();
+        return Historial::select('peso', 'imc', 'estado_rutina_id')->get();
     }
 
     /**
@@ -48,7 +48,7 @@ class HistorialController extends Controller
      */
     public function show($id)
     {
-        return Historial::find($id);
+        return Historial::select('peso', 'imc', 'estado_rutina_id')->where('id', $id)->first();
     }
 
     /**

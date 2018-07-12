@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return User::select('usu_correo', 'tgm_rol_id', 'tgm_cliente_id')->get();
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        return User::select('usu_correo', 'tgm_rol_id', 'tgm_cliente_id')->where('id', $id)->get();
     }
 
     /**

@@ -15,7 +15,7 @@ class EstadoRutinaController extends Controller
      */
     public function index()
     {
-        return EstadoRutina::all();
+        return EstadoRutina::select('tgm_cliente_id', 'tgm_rutina_id', 'estado')->get();
     }
 
     /**
@@ -25,7 +25,7 @@ class EstadoRutinaController extends Controller
      */
     public function create()
     {
-        return EstadoRutina::all();
+        //
     }
 
     /**
@@ -52,7 +52,7 @@ class EstadoRutinaController extends Controller
      */
     public function show($id)
     {
-        return EstadoRutina::find($id);
+        return EstadoRutina::select('tgm_cliente_id', 'tgm_rutina_id', 'estado')->where('id', $id)->first();
     }
 
     /**

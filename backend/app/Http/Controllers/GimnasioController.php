@@ -15,7 +15,7 @@ class GimnasioController extends Controller
      */
     public function index()
     {
-        return Gimnasio::all();
+        return Gimnasio::select('nombre')->get();
     }
 
     /**
@@ -48,7 +48,7 @@ class GimnasioController extends Controller
      */
     public function show($id)
     {
-        return Gimnasio::find($id);
+        return Gimnasio::select('nombre')->where('id', $id)->get();
     }
 
     /**
