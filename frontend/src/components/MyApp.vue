@@ -33,7 +33,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-      <v-list class="pt-0" dense style="background: transparent;" v-if="user.rol == 'Secretaria'">
+      <v-list class="pt-0" dense style="background: transparent;">
         <v-list-tile @click="goToClientes()">
           <v-list-tile-action>
             <v-icon>people</v-icon>
@@ -43,17 +43,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-      <v-list class="pt-0" dense style="background: transparent;" v-if="user.rol == 'Secretaria'">
-        <v-list-tile @click="goToEntrenadores()">
-          <v-list-tile-action>
-            <v-icon>directions_run</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Entrenadores</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-      <v-list class="pt-0" dense style="background: transparent;" v-if="user.rol == 'Entrenador'">
+      <v-list class="pt-0" dense style="background: transparent;">
         <v-list-tile @click="goHome()">
           <v-list-tile-action>
             <v-icon>fitness_center</v-icon>
@@ -131,10 +121,6 @@ export default {
     goToClientes () {
       let vm = this
       vm.$router.push('/clientes')
-    },
-    goToEntrenadores () {
-      let vm = this
-      vm.$router.push('/entrenadores')
     }
   },
   name: 'App'
