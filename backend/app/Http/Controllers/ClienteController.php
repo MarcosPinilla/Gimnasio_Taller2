@@ -38,8 +38,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        Cliente::create($request->all());
-        return ['created' => true];
+        return Cliente::insertGetId([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido
+        ]);
+        
     }
 
     /**
