@@ -28,6 +28,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::resource('rol', 'RolController');
     Route::resource('rutina', 'RutinaController');
     Route::resource('usuario', 'UserController');
+    Route::get('historialrutina/{id}', 'ClienteController@obtenerHistorialyRutina');
 
 });
 //Nueva ruta para el login

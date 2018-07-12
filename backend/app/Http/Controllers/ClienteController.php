@@ -100,4 +100,12 @@ class ClienteController extends Controller
             ->first();
 
     }
+
+    public function obtenerHistorialyRutina($id) {
+
+        return Cliente::with('estados.historiales', 'estados.rutina')
+            ->where('tgm_cliente.id', $id)
+            ->first();
+
+    }
 }
