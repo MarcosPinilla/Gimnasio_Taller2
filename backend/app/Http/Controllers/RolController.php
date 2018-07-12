@@ -15,7 +15,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        return Rol::all();
+        return Rol::select('desc_rol')->get();
     }
 
     /**
@@ -48,7 +48,7 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        return Rol::find($id);
+        return Rol::select('desc_rol')->where('id', $id)->first();
     }
 
     /**

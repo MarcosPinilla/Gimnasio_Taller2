@@ -17,7 +17,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return Cliente::all();
+        return Cliente::select('nombre','apellido')->get();
     }
 
     /**
@@ -50,7 +50,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        return Cliente::find($id);
+        return Cliente::select('nombre', 'apellido')->where('id', $id)->first();
     }
 
     /**

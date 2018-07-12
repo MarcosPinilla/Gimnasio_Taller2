@@ -15,7 +15,7 @@ class RutinaController extends Controller
      */
     public function index()
     {
-        return Rutina::all();
+        return Rutina::select('nombre', 'descripcion')->get();
     }
 
     /**
@@ -48,7 +48,7 @@ class RutinaController extends Controller
      */
     public function show($id)
     {
-        return Rutina::find($id);
+        return Rutina::select('nombre', 'descripcion')->where('id', $id)->first();
     }
 
     /**
