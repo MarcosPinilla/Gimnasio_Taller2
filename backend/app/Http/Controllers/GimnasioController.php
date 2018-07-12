@@ -15,7 +15,7 @@ class GimnasioController extends Controller
      */
     public function index()
     {
-        return Gimnasio::select('nombre')->get();
+        return Gimnasio::select('id', 'nombre')->get();
     }
 
     /**

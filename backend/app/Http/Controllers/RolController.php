@@ -15,7 +15,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        return Rol::select('desc_rol')->get();
+        return Rol::select('id', 'desc_rol')->get();
     }
 
     /**

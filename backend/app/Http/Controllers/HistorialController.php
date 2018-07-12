@@ -15,7 +15,7 @@ class HistorialController extends Controller
      */
     public function index()
     {
-        return Historial::select('peso', 'imc', 'estado_rutina_id')->get();
+        return Historial::select('id', 'peso', 'imc', 'estado_rutina_id')->get();
     }
 
     /**

@@ -15,7 +15,7 @@ class EstadoRutinaController extends Controller
      */
     public function index()
     {
-        return EstadoRutina::select('tgm_cliente_id', 'tgm_rutina_id', 'estado')->get();
+        return EstadoRutina::select('id', 'tgm_cliente_id', 'tgm_rutina_id', 'estado')->get();
     }
 
     /**

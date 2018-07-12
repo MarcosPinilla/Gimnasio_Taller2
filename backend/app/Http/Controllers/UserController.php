@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::select('usu_correo', 'tgm_rol_id', 'tgm_cliente_id')->get();
+        return User::select('id', 'usu_correo', 'tgm_rol_id', 'tgm_cliente_id')->get();
     }
 
     /**

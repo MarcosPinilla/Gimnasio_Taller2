@@ -15,7 +15,7 @@ class RutinaController extends Controller
      */
     public function index()
     {
-        return Rutina::select('nombre', 'descripcion')->get();
+        return Rutina::select('id', 'nombre', 'descripcion')->get();
     }
 
     /**
