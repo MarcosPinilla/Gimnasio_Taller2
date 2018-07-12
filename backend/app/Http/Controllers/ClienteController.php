@@ -17,7 +17,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return Cliente::select('nombre','apellido')->get();
+        return Cliente::select('id', 'nombre','apellido')->get();
     }
 
     /**
